@@ -75,7 +75,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
       end
 
-      it 'descriptionが1000字以上だと出品できない' do
+      it 'descriptionが1001字以上だと出品できない' do
         @item.description = 'あ' * 1001
         @item.valid?
         expect(@item.errors.full_messages).to include('Description is too long (maximum is 1000 characters)')
