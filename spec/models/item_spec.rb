@@ -22,31 +22,31 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
-      it 'categoryが未選択だと出品できない' do
-        @item.category_id = ''
+      it 'カテゴリーに「---」が選択されている場合は出品できない' do
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-      it 'conditionが未選択だと出品できない' do
-        @item.condition_id = ''
+      it '商品の状態に「---」が選択されている場合は出品できない' do
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
 
-      it 'shipping_fee_burdenが未選択だと出品できない' do
-        @item.shipping_fee_burden_id = ''
+      it '配送料の負担に「---」が選択されている場合は出品できない' do
+        @item.shipping_fee_burden_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee burden can't be blank")
       end
 
-      it 'prefectureが未選択だと出品できない' do
-        @item.prefecture_id = ''
+      it '発送元の地域に「---」が選択されている場合は出品できない' do
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
-      it 'shipping_daysが未選択だと出品できない' do
-        @item.shipping_days_id = ''
+      it '発送までの日数に「---」が選択されている場合は出品できない' do
+        @item.shipping_days_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping days can't be blank")
       end
