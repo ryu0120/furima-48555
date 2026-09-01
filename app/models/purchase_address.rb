@@ -1,6 +1,6 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :user_id, :item_id
+  attr_accessor :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :city, :address, :user_id, :item_id
@@ -11,7 +11,7 @@ class PurchaseAddress
             presence: true,
             length: { minimum: 10, message: 'is too short' },
             format: { with: /\A[0-9]{10,11}\z/ }
-
+  validates :token, presence: true
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
 
